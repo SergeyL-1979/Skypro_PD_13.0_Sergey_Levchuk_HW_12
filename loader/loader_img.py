@@ -35,7 +35,12 @@ def page_post_upload():
         picture.save(f'./uploads/images/{picture.filename}')
         picture_url = f'uploads/images/{picture.filename}'
         add_content({'pic': picture_url, 'content': content})
+        logging.info('POST SAVE')
         return render_template("post_uploaded.html", picture=picture, content=content)
+    elif picture == picture:
+        logging.error(f'Расширение *.{extension} - ЗАПРЕЩЕНЫ!!!. Отсутствуют данные')
+        return f'''<h1> Отсутствуют данные </h1> <strong>Расширения *.{extension} - ЗАПРЕЩЕНЫ</strong>
+                <p>Вернитесь <a href="/post" class="link">назад</a></p>'''
     else:
         logging.info(f'{picture.filename}: не изображение!')
         return render_template("post_uploaded.html", extension=extension)

@@ -2,12 +2,13 @@
 # -*- coding: utf-8 -*-
 
 import json
-from pprint import pprint
+import os
+from os import path
 
 
 def load_json(path="posts.json"):
     """ Функция загрузки данных из JSON """
-    dates = []
+
     with open(path, "r", encoding="utf-8") as file:
         dates = json.load(file)
     return dates
