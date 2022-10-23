@@ -10,7 +10,7 @@ from loader.loader_img import loader_img
 
 POST_PATH = "posts.json"
 UPLOAD_FOLDER = "uploads/images"
-ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
+
 
 app = Flask(__name__)
 app.config['MAX_CONTENT_LENGTH'] = 2 * 1024 * 1024
