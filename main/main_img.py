@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 # `main` - для показывания фото
+from json import JSONDecodeError
 from flask import Blueprint, render_template, request
 import logging
 from functions import search_content
@@ -17,13 +18,19 @@ def page_index():
 @main_bp.route("/search")
 def page_search():
 
-    sub = request.args.get('s').lower()
-    posts = search_content(sub)
 
-    if not sub:
-        return f'''<h2> Строка поиска пуста. </h2>
-                <p>Повторите запрос! Вернитесь <a href="/" class="link">назад</a></p>'''
-    logging.info(f'Запросы поиска: {sub}')
+    try:
+        sub = request.args.get('s').lower()
+        posts = search_content(sub)
+        if not sub:
+            return f'''<h2> Строка поиска пуста. </h2>
+                    <p>Повторите запрос! Вернитесь <a href="/" class="link">назад</a></p>'''
+        logging.info(f'Запросы поиска: {sub}')
+    except FileNotFoundError:
+        logging.error('Файл отсуствует')
+        return 'Файл отсутствует'
+    except JSONDecodeError:
+        return 'Невалидный файл'
     return render_template('post_list.html', posts=posts, sub=sub)
 
 
