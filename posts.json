@@ -38,5 +38,13 @@
     {
         "pic": "uploads/images/cat.png",
         "content": "CAT"
+    },
+    {
+        "pic": "uploads/images/beautiful-sunset-beach-landscape-with-a-boat.jpg",
+        "content": "Как красиво"
+    },
+    {
+        "pic": "uploads/images/000000843.jpg",
+        "content": "Кот с синими глазами\r\ncat with blue eyes"
     }
 ]
