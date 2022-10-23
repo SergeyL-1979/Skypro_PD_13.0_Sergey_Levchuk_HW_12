@@ -50,5 +50,9 @@
     {
         "pic": "uploads/images/1472043884_02.jpg",
         "content": "Новая картинка с природой"
+    },
+    {
+        "pic": "./uploads/images/9f8fdff471b7d281f81f694c100b5adc.png",
+        "content": "MONKEY"
     }
 ]

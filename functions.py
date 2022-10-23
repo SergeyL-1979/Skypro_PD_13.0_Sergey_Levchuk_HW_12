@@ -2,8 +2,6 @@
 # -*- coding: utf-8 -*-
 
 import json
-import os
-from os import path
 
 
 def load_json(path="posts.json"):
