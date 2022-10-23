@@ -1,0 +1,30 @@
+{% extends "index.html" %}
+
+
+{% block title %} Пост добавлен {% endblock %}
+
+{% block content %}
+
+<main>
+
+    <a href="/" class="link">Назад</a>
+    {% if extension %}
+    <p>Тип файлов <strong>{{ extension }}</strong> не поддерживается</p><hr>
+    {% else %}
+    <h1>Пост добавлен! </h1>
+
+    <div class="post">
+        <q>{{ picture.filename }}</q>
+        <img src="../uploads/images/{{ picture.filename }}" width="100%" alt="">
+        <p>Текст добавленного поста тут</p>
+        <p>{{ content }}</p>
+    </div>
+    <hr>
+
+    {% endif %}
+
+    <a href="/post" class="button">Добавить еще пост</a>
+
+</main>
+
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends "index.html" %}
+
+
+{% block title %} Все посты найденные по запросу {% endblock %}
+
+{% block content %}
+<main>
+
+    <a href="/" class="link">Назад</a>
+
+    <h1> Посты по запросу: {{ sub }} </h1>
+
+    {% for i in posts %}
+    <div class="post">
+        <img src="{{ i.pic }}" width="100%" alt="">
+        <p>{{ i.content }}</p>
+    </div>
+    {% endfor %}
+    <hr>
+
+    <a href="post" class="button">Добавить пост</a>
+
+</main>
+
+{% endblock %}
