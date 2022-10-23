@@ -29,6 +29,10 @@ def page_post_upload():
     filename = picture.filename
     # Получаем расширение файла
     extension = filename.split(".")[-1]
+    if not picture or not content:
+        logging.error(f'Расширение *.{extension} - ЗАПРЕЩЕНЫ!!!. Отсутствуют данные')
+        return f'''<h1> Отсутствуют данные или расширения *.{extension} - ЗАПРЕЩЕНЫ!</h1>
+                        <p>Вернитесь <a href="/post" class="link">назад</a></p>'''
     # Если расширение файла в белом списке
     if extension in ALLOWED_EXTENSIONS:
         # Сохраняем картинку под родным именем в папку uploads
@@ -37,10 +41,6 @@ def page_post_upload():
         add_content({'pic': picture_url, 'content': content})
         logging.info('POST SAVE')
         return render_template("post_uploaded.html", picture=picture, content=content)
-    elif picture == picture:
-        logging.error(f'Расширение *.{extension} - ЗАПРЕЩЕНЫ!!!. Отсутствуют данные')
-        return f'''<h1> Отсутствуют данные </h1> <strong>Расширения *.{extension} - ЗАПРЕЩЕНЫ</strong>
-                <p>Вернитесь <a href="/post" class="link">назад</a></p>'''
     else:
         logging.info(f'{picture.filename}: не изображение!')
         return render_template("post_uploaded.html", extension=extension)
